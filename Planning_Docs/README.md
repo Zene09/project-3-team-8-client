@@ -19,7 +19,7 @@ You can also view and comment blog posts.
 The blog data will be seeded.
 
 ## Entity Relationship Diagram (ERD)
-![]()
+![](/Planning_Docs/ERD.png)
 
 ## Collaborator Roles
 Kyle Moreno: Back End
