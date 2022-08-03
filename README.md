@@ -350,7 +350,7 @@ HTTP/1.1 204 No Content
 The blog data will be seeded.
 
 ## Entity Relationship Diagram (ERD)
-![](/Planning_Docs/ERD.png)
+![](/Planning_Docs/ERD_2.png)
 
 ## Wireframes
 ![](/Planning_Docs/project-3-wireframe.jpg)
