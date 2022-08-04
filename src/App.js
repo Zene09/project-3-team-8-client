@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateBlog from './components/blogs/CreateBlog'
+import ShowBlog from './components/blogs/ShowBlog'
 
 const App = () => {
 
@@ -44,38 +45,79 @@ const App = () => {
 	return (
 		<Fragment>
 			<Header user={user} />
-			<Routes>
-				<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-				<Route
-					path='/sign-up'
-					element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-				/>
-				<Route
-					path='/sign-in'
-					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-				/>
-				<Route
-					path='/sign-out'
-					element={
-						<RequireAuth user={user}>
-							<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-						</RequireAuth>
-					}
-				/>
-				<Route
-					path='/change-password'
-					element={
-						<RequireAuth user={user}>
-							<ChangePassword msgAlert={msgAlert} user={user} />
-						</RequireAuth>}
-				/>
-				<Route path='/addBlog'
-					element={<RequireAuth user={user}>
-						<CreateBlog />
-					</RequireAuth>
-					}
-				/>
-			</Routes>
+				<Routes>
+					<Route 
+						path='/' 
+						element={
+							<Home 
+								msgAlert={msgAlert} 
+								user={user} 
+							/>
+						} 
+					/>
+					<Route
+						path='/sign-up'
+						element={
+							<SignUp 
+								msgAlert={msgAlert} 
+								setUser={setUser} 
+							/>
+						}
+					/>
+					<Route 
+						path='/sign-in'
+						element={
+							<SignIn 
+								msgAlert={msgAlert} 
+								setUser={setUser} 
+							/>
+						}
+					/>
+					<Route 
+						path='/sign-out'
+						element={
+							<RequireAuth user={user}>
+								<SignOut 
+									msgAlert={msgAlert} 
+									clearUser={clearUser} 
+									user={user} 
+								/>
+							</RequireAuth>
+						}
+					/>
+					<Route 
+						path='/change-password'
+						element={
+							<RequireAuth user={user}>
+								<ChangePassword 
+									msgAlert={msgAlert} 
+									user={user} 
+								/>
+							</RequireAuth>}
+					/>
+					<Route 
+						path='/addBlog'
+						element={
+							<RequireAuth user={user}>
+								<CreateBlog 
+									msgAlert={msgAlert} 
+									user={user}
+								/>
+							</RequireAuth>
+						}
+					/>
+					<Route 
+						path='/blogs/:id'
+						element={
+							<RequireAuth user={user}>
+								<ShowBlog 
+									msgAlert={msgAlert} 
+									user={user}
+								/>
+							</RequireAuth>
+						}
+					/>
+				</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
 					key={msgAlert.id}

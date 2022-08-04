@@ -1,20 +1,28 @@
-import { useState } from "react";
-import BlogForm from "../shared/BlogForm";
-import { createBlogSuccess, createBlogFailure, } from "../shared/AutoDismissAlert/messages";
+import { useState } from "react"
 import { createBlog } from "../../api/blogs"
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+import { createBlogSuccess, createBlogFailure } from "../shared/AutoDismissAlert/messages"
+import BlogForm from "../shared/BlogForm"
 
 const CreateBlog = (props) => {
+    // console.log('these are the props in createBlog\n', props)
     const { user, msgAlert } = props 
+
     const navigate = useNavigate()
+
     const [blog, setBlog] = useState({
         title: '',
         body: '',
     })
+    
+    console.log('this is blog in createBlog', blog)
+
     const handleChange = (e) => {
         setBlog(prevBlog => {
-            const updatedValue = e.target.value
+            let updatedValue = e.target.value
             const updatedName = e.target.name
+
+
             const updatedBlog = {
                 [updatedName]: updatedValue
             }
@@ -32,7 +40,7 @@ const CreateBlog = (props) => {
             // if we're successful, navigate to the show page for the new blog
             // .then(res => console.log('this is the response from API call', res))
             // .then(res => console.log('this is the id of the new blog', res.data.blog.id))
-            .then(res => { navigate(`/pets/${res.data.blog.id}`) })
+            .then(res => { navigate(`/blogs/${res.data.blog.id}`) })
             // send a success message to the user
             .then(() => {
                 msgAlert({
@@ -52,6 +60,10 @@ const CreateBlog = (props) => {
     }
 
 
-    return <BlogForm blog={blog} handleChange={handleChange} handleSubmit={handleSubmit} />
+    return <BlogForm 
+        blog={blog} 
+        handleChange={handleChange} 
+        handleSubmit={handleSubmit} 
+    />
 }
 export default CreateBlog
