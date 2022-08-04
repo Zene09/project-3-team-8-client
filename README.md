@@ -1,6 +1,7 @@
-# Project 3 Client: Blog App
+# Project 3 Client: MMO & Co.
 This app allows you to create, view, update, like, dislike and delete blog posts. 
 You can also view and comment blog posts.
+
 
 ## User Stories 
 * As a user, I want to be able to create an account
@@ -15,7 +16,7 @@ You can also view and comment blog posts.
 * As a user, I want to be able to like a blog
 * As a user, I want to be able to dislike a blog
 
-# Project 3 API: Blog App
+# Project 3 API: MMO & Co.
 
 The back-end API for Blog App: MMO & Co. using an `express` auth template. This API is built off authentication and middlware boilerplates. This API along with AXIOS is used to service the client for MMO & Co.. MMO & Co. is a blogging app that allows users to create and log stories and share them with other users.
 
@@ -52,6 +53,7 @@ POST http://localhost:8000/sign-up
 {
     "credentials": {
       "email": "an@example.email",
+      "username": "User-man",
       "password": "an example password",
       "password_confirmation": "an example password"
     }
@@ -142,11 +144,11 @@ HTTP/1.1 204 No Content
 
 | Verb   | URI Pattern | Controller#Action |
 | ------ | ----------- | ----------------- |
-| GET    | `/blog/`    | `blog#index`      |
-| GET    | `/blog/:id` | `blog#show`       |
-| POST   | `/blog/`    | `blog#create`     |
-| PATCH  | `/blog/:id` | `blog#update`     |
-| DELETE | `/blog/:id` | `blog#delete`     |
+| GET    | `/blogs/`    | `blogs#index`      |
+| GET    | `/blogs/:id` | `blogs#show`       |
+| POST   | `/blogs/`    | `blogs#create`     |
+| PATCH  | `/blogs/:id` | `blogs#update`     |
+| DELETE | `/blogs/:id` | `blogs#delete`     |
 
 #### GET / INDEX
 
@@ -278,11 +280,11 @@ HTTP/1.1 204 No Content
 
 | Verb   | URI Pattern                   | Controller#Action |
 | ------ | ----------------------------- | ----------------- |
-| GET    | `/comment/:blogId`            | `comment#index`   |
-| GET    | `/comment/:blogId`            | `comment#show`    |
-| POST   | `/comment/:blogId`            | `comment#create`  |
-| PATCH  | `/comment/:blogId/:commentId` | `comment#update`  |
-| DELETE | `/comment/:blogId/:commentId` | `comment#delete`  |
+| GET    | `/comments/:blogId`            | `comments#index`   |
+| GET    | `/comments/:blogId`            | `comments#show`    |
+| POST   | `/comments/:blogId`            | `comments#create`  |
+| PATCH  | `/comments/:blogId/:commentId` | `comments#update`  |
+| DELETE | `/comments/:blogId/:commentId` | `comments#delete`  |
 
 #### POST / CREATE
 
