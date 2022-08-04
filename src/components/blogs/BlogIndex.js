@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import messages from '../shared/AutoDismissAlert/messages'
 import Card from 'react-bootstrap/Card'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllBlogs } from "../../api/blogs";
 
@@ -49,6 +49,11 @@ const BlogIndex = (props) => {
                     <p>{blog.body}</p>
                 </Card.Text>
             </Card.Body>
+                <Card.Footer style={{textAlign: "right"}}>
+                <button>
+                <Link to={`/blogs/${blog.id}`}>View this ok</Link>
+                </button>
+                </Card.Footer>
         </Card>
     ))
 
