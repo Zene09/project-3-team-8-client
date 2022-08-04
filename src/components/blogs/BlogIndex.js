@@ -1,20 +1,20 @@
 import { useState, useEffect } from "react";
 import messages from '../shared/AutoDismissAlert/messages'
-// import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card'
 // import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllBlogs } from "../../api/blogs";
 
-// const cardContainerStyle = {
-//     display: 'flex',
-//     flexFlow: 'row wrap',
-//     justifyContent: 'center'
-// }
+const cardContainerStyle = {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center'
+}
 
 // BlogIndex should show all blogs and display them
 
 const BlogIndex = (props) => {
-    console.log(props)
+    console.log("watermelon sugar", props)
     const [blogs, setBlogs] = useState(null)
     const [error, setError] = useState(false)
     const { msgAlert } = props
@@ -41,22 +41,21 @@ const BlogIndex = (props) => {
         return <p>No blogs yet. Better add some.</p>
     }
 
-    // const blogCards = blogs.map(blog => (
-    //     <Card style={{ width: '30%', margin: 5 }} key={blog.id}>
-    //         <Card.Header>{blog.title}</Card.Header>
-    //         <Card.Body>
-    //             <Card.Text>
-    //                 <p>{blog.body}</p>
-    //             </Card.Text>
-    //         </Card.Body>
-    //     </Card>
-    // ))
+    const blogCards = blogs.map(blog => (
+        <Card style={{ width: '30%', margin: 5 }} key={blog.id}>
+            <Card.Header>{blog.title}</Card.Header>
+            <Card.Body>
+                <Card.Text>
+                    <p>{blog.body}</p>
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    ))
 
     return (
-        <div>Test</div>
-        // <div style={cardContainerStyle}>
-        //     {blogCards}
-        // </div>
+        <div style={cardContainerStyle}>
+            {blogCards}
+        </div>
     )
 }
 export default BlogIndex
