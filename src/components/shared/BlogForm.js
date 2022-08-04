@@ -1,8 +1,8 @@
 import { Form, Button, } from 'react-bootstrap'
 const BlogForm = (props) => {
-    const { blog, handleChange } = props
+    const { blog, handleChange, handleSubmit } = props
     return (
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <Form.Label htmlFor="title">Title</Form.Label>
             <Form.Control
                 placeholder="Blog Title"
