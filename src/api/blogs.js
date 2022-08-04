@@ -36,7 +36,14 @@ export const createBlog = (user, newBlog) => {
 
 // please put update function here lyndonna
 
-// DELETE - DESTROY - hey I'll work in this -kyle
-export const removeBlog = (user, blogId) => {
 
+// DELETE - DESTROY - hey I'll work onn this -kyle
+export const removeBlog = (user, blogId) => {
+    return axios({
+        url: `${apiUrl}/blogs/${blogId}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`,
+        }
+    })
 }

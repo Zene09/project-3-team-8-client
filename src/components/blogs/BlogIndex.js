@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import messages from '../shared/AutoDismissAlert/messages'
-import Card from 'react-bootstrap/Card'
-import { Link } from 'react-router-dom'
+import { Card, Button } from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllBlogs } from "../../api/blogs";
 
@@ -17,6 +17,7 @@ const BlogIndex = (props) => {
     console.log("watermelon sugar", props)
     const [blogs, setBlogs] = useState(null)
     const [error, setError] = useState(false)
+    const navigate = useNavigate()
     const { msgAlert } = props
     useEffect(() => {
         getAllBlogs()
@@ -50,9 +51,12 @@ const BlogIndex = (props) => {
                 </Card.Text>
             </Card.Body>
                 <Card.Footer style={{textAlign: "right"}}>
-                <button>
-                <Link to={`/blogs/${blog.id}`}>View this ok</Link>
-                </button>
+                
+                {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
+                <Button onClick={() => navigate(`/blogs/${blog.id}`)}>
+                    View this post
+                </Button>
+                
                 </Card.Footer>
         </Card>
     ))

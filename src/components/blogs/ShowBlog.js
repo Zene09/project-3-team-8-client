@@ -2,11 +2,11 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
 
-import { Container, Card } from "react-bootstrap"
+import { Container, Card, Button } from "react-bootstrap"
 
 import LoadingScreen from "../shared/LoadingScreen"
-// import this down here vv updateBlog, removeBlog
-import { getOneBlog } from "../../api/blogs"
+// import this down here vv updateBlog,
+import { getOneBlog, removeBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
 
 // const cardContainerLayout = {
@@ -41,27 +41,27 @@ const ShowBlog = (props) => {
             })
     }, [updated])
 
-    // const removeTheBlog = () => {
-    //     removeBlog(user, blog.id)
-    //         // on success send a success message
-    //         .then(() => {
-    //             msgAlert({
-    //                 heading: 'Success',
-    //                 message: messages.removeBlogSuccess,
-    //                 variant: 'success'
-    //             })
-    //         })
-    //         // then navigate to index
-    //         .then(() => {navigate('/')})
-    //         // on failure send a failure message
-    //         .catch(err => {                   
-    //             msgAlert({
-    //                 heading: 'Error removing blog',
-    //                 message: messages.removeBlogFailure,
-    //                 variant: 'danger'
-    //             })
-    //         })
-    // }
+    const removeTheBlog = () => {
+        removeBlog(user, blog.id)
+            // on success send a success message
+            .then(() => {
+                msgAlert({
+                    heading: 'Success',
+                    message: messages.removeBlogSuccess,
+                    variant: 'success'
+                })
+            })
+            // then navigate to index
+            .then(() => {navigate('/')})
+            // on failure send a failure message
+            .catch(err => {                   
+                msgAlert({
+                    heading: 'Error removing blog',
+                    message: messages.removeBlogFailure,
+                    variant: 'danger'
+                })
+            })
+    }
 
     if (!blog) {
         return <LoadingScreen />
@@ -76,9 +76,28 @@ const ShowBlog = (props) => {
                             <div><small>Body:{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
-                    {/* <Card.Footer>
-                        add likes and timestamps here maybe
-                    </Card.Footer> */}
+                    <Card.Footer>
+                        {
+                            // this makes it so only the user who owns the post can delete it
+                            // we can put the edit modal (or button here) it just depends if we build an
+                            // edit function
+                            blog.owner && user && blog.owner._id === user._id
+                            ?
+                            <>
+                                {/* edit modal here */}
+
+                                <Button onClick={() => removeTheBlog()}
+                                    className="m-2"
+                                    variant="danger"
+                                >
+                                    Delete this post
+                                </Button>
+                            </>
+                            :
+                            null
+                        }          
+                        {/* <small>add likes and timestamps here maybe</small> */}
+                    </Card.Footer>
                 </Card>
             </Container>
         </>
