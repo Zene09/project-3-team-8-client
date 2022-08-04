@@ -39,7 +39,7 @@ const SignIn = (props) => {
                 msgAlert({
                     heading: 'Sign In Success',
                     message: messages.signInSuccess,
-                    variant: 'success',
+                    variant: 'outline-success',
                 })
             )
             .then(() => navigate('/'))
@@ -49,7 +49,7 @@ const SignIn = (props) => {
                 msgAlert({
                     heading: 'Sign In Failed with error: ' + error.message,
                     message: messages.signInFailure,
-                    variant: 'danger',
+                    variant: 'outline-danger',
                 })
             })
     }
@@ -81,7 +81,7 @@ const SignIn = (props) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button variant='outline-primary' type='submit'>
                         Submit
                     </Button>
                 </Form>

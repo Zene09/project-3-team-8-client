@@ -53,7 +53,10 @@ const BlogIndex = (props) => {
                 <Card.Footer style={{textAlign: "right"}}>
                 
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
-                <Button onClick={() => navigate(`/blogs/${blog.id}`)}>
+                <Button 
+                    variant="outline-primary"
+                    onClick={() => navigate(`/blogs/${blog.id}`)}
+                >
                     View this post
                 </Button>
                 

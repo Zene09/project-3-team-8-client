@@ -9,11 +9,10 @@ import LoadingScreen from "../shared/LoadingScreen"
 import { getOneBlog, removeBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
 
-// const cardContainerLayout = {
-//     display: 'flex',
-//     justifyContent: 'center',
-//     flexFlow: 'row wrap'
-// }
+const containerStyle = {
+    display: 'flex',
+    // flexFlow: 'row wrap'
+}
 
 const ShowBlog = (props) => {
     const [blog, setBlog] = useState(null)
@@ -70,7 +69,8 @@ const ShowBlog = (props) => {
         <>
             <Container className="fluid">
                 <Card>
-                    <Card.Header>{blog.title}</Card.Header>
+                    <Card.Header><h2
+                        style={{textAlign: 'center'}}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
                             <div><small>Body:{blog.body}</small></div>
@@ -88,7 +88,7 @@ const ShowBlog = (props) => {
 
                                 <Button onClick={() => removeTheBlog()}
                                     className="m-2"
-                                    variant="danger"
+                                    variant="outline-danger"
                                 >
                                     Delete this post
                                 </Button>
@@ -97,6 +97,20 @@ const ShowBlog = (props) => {
                             null
                         }          
                         {/* <small>add likes and timestamps here maybe</small> */}
+                        {/* tested styling here */}
+                        {/* <div style={containerStyle}> */}
+                        <p style={{textAlign: 'right'}}>{blog.commentsAvail}</p>
+                        <Button 
+                            onClick={() => navigate('/')}
+                                className="m-2 col-1"
+                                variant="outline-secondary"
+                                style={{
+                                    float: 'left',
+                                }}
+                            >
+                                 Go back
+                        </Button>
+                        {/* </div> */}
                     </Card.Footer>
                 </Card>
             </Container>
