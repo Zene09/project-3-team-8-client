@@ -39,11 +39,11 @@ export const updateBlog = (user, blogId) => {
     console.log('update blog function ran')
         return axios({
             url: apiUrl + '/blogs',
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 Authorization: `Token token=${user.token}`,
             },
-            data: { blogId: newBlog },
+            data: { blogId: blogId },
         })
     }
 
