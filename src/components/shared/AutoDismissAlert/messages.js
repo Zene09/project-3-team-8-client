@@ -11,8 +11,8 @@ const messages = {
 	createBlogFailure: "Error, blog was not created",
 	getBlogSuccess: "Blog get success!",
 	getBlogFailure: "Blog failed to get",
-	updateBlogSuccess: "Blog Updated!",
-	updateBlogFailure: "Error, blog was not Updated",
+	removeBlogSuccess: "Blog successfully removed!",
+	removeBlogFailure: "Blog failed to delete!"
 }
 
 module.exports = messages
