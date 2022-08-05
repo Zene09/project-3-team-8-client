@@ -110,12 +110,10 @@ const App = () => {
 				<Route
 					path='/blogs/:id'
 					element={
-						<RequireAuth user={user}>
-							<ShowBlog
-								msgAlert={msgAlert}
-								user={user}
-							/>
-						</RequireAuth>
+						<ShowBlog
+							msgAlert={msgAlert}
+							user={user}
+						/>
 					}
 				/>
 				<Route

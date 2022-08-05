@@ -51,7 +51,7 @@ const BlogIndex = (props) => {
                 </Card.Text>
             </Card.Body>
 
-            <Card.Footer style={{ textAlign: "right" }}>
+                <Card.Footer style={{textAlign: "right"}}>
 
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
                 <Button
@@ -60,12 +60,9 @@ const BlogIndex = (props) => {
                 >
                     View this post
                 </Button>
-
             </Card.Footer>
-
         </Card>
     ))
-
     return (
         <div style={cardContainerStyle}>
             {blogCards}

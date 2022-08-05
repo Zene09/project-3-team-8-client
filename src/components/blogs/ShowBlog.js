@@ -73,7 +73,7 @@ const ShowBlog = (props) => {
                         style={{textAlign: 'center'}}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>Body:{blog.body}</small></div>
+                            <div><small>{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
