@@ -1,11 +1,10 @@
 import { useState } from "react"
 import { createBlog } from "../../api/blogs"
 import { useNavigate } from "react-router-dom"
-import { createBlogSuccess, createBlogFailure } from "../shared/AutoDismissAlert/messages"
+import { updateBlogSuccess, updateBlogFailure } from "../shared/AutoDismissAlert/messages"
 import BlogForm from "../shared/BlogForm"
 
-const CreateBlog = (props) => {
-    // console.log('these are the props in createBlog\n', props)
+const UpdateBlog = (props) => {
     const { user, msgAlert } = props
 
     const navigate = useNavigate()
@@ -37,15 +36,12 @@ const CreateBlog = (props) => {
         // e equals the event
         e.preventDefault()
         createBlog(user, blog)
-            // if we're successful, navigate to the show page for the new blog
-            // .then(res => console.log('this is the response from API call', res))
-            // .then(res => console.log('this is the id of the new blog', res.data.blog.id))
             .then(res => { navigate(`/blogs/${res.data.blog.id}`) })
             // send a success message to the user
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: createBlogSuccess,
+                    message: updateBlogSuccess,
                     variant: 'success'
                 })
             })
@@ -53,7 +49,7 @@ const CreateBlog = (props) => {
             .catch(() =>
                 msgAlert({
                     heading: 'Oh No!',
-                    message: createBlogFailure,
+                    message: updateBlogFailure,
                     variant: 'danger'
                 })
             )
@@ -66,4 +62,4 @@ const CreateBlog = (props) => {
         handleSubmit={handleSubmit}
     />
 }
-export default CreateBlog
+export default UpdateBlog
