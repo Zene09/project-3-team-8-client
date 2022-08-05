@@ -32,7 +32,7 @@ const CreateBlog = (props) => {
             // if we're successful, navigate to the show page for the new blog
             // .then(res => console.log('this is the response from API call', res))
             // .then(res => console.log('this is the id of the new blog', res.data.blog.id))
-            .then(res => { navigate(`/pets/${res.data.blog.id}`) })
+            .then(res => { navigate(`/blogs/${res.data.blog.id}`) })
             // send a success message to the user
             .then(() => {
                 msgAlert({
