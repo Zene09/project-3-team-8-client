@@ -116,6 +116,8 @@ const App = () => {
 						/>
 					}
 				/>
+				{/* route, you want authentic for edit and delete only
+				but for create remove authentication */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

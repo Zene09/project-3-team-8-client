@@ -37,15 +37,15 @@ export const createBlog = (user, newBlog) => {
 // please put update function here lyndonna
 export const updateBlog = (user, updatedBlog) => {
     console.log('update blog function ran')
-    return axios({
-        url: `${apiUrl}/blogs/${updatedBlog.id}`,
-        method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`,
-        },
-        data: { blog: updatedBlog },
-    })
-}
+        return axios({
+            url: `${apiUrl}/blogs/${updatedBlog.id}`,
+            method: 'PATCH',
+            headers: {
+                Authorization: `Token token=${user.token}`,
+            },
+            data: { blog: updatedBlog },
+        })
+    }
 
 // DELETE - DESTROY - hey I'll work on this -kyle
 export const removeBlog = (user, blogId) => {

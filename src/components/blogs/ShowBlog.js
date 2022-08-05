@@ -104,24 +104,24 @@ const ShowBlog = (props) => {
                         </Button>
                         {
                             blog.owner && user && blog.owner._id === user._id
-                                ?
-                                <>
-                                    <Button onClick={() => setEditModalShow(true)}
-                                        className="m-2"
-                                        variant="outline-secondary"
-                                    >
-                                        Update this post
-                                    </Button>
-                                    <Button onClick={() => removeTheBlog()}
-                                        className="m-2"
-                                        variant="outline-danger"
-                                    >
-                                        Delete this post
-                                    </Button>
-                                </>
-                                :
-                                null
-                        }
+                            ?
+                            <>
+                                <Button onClick={() => setEditModalShow(true)}
+                                    className="m-2"
+                                    variant="outline-secondary"
+                                >
+                                    Update this post
+                                </Button>
+                                <Button onClick={() => removeTheBlog()}
+                                    className="m-2"
+                                    variant="outline-danger"
+                                >
+                                    Delete this post
+                                </Button>
+                            </>
+                            :
+                            null
+                        }          
                         {/* <small>add likes and timestamps here maybe</small> */}
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
@@ -148,7 +148,7 @@ const ShowBlog = (props) => {
                 updateBlog={updateBlog}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setEditModalShow(false)}
+                handleClose={() => setEditModalShow(false)} 
             />
             <NewCommentModal
                 blog={blog}
