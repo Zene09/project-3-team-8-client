@@ -73,7 +73,7 @@ const ShowBlog = (props) => {
                         style={{textAlign: 'center'}}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>{blog.body}</small></div>
+                            <div><small>Body:{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
@@ -85,7 +85,7 @@ const ShowBlog = (props) => {
                                     className="m-2"
                                     variant="outline-secondary"
                                 >
-                                    Edit this post
+                                    Update this post
                                 </Button>
                                 <Button onClick={() => removeTheBlog()}
                                     className="m-2"
@@ -122,13 +122,7 @@ const ShowBlog = (props) => {
                 updateBlog={updateBlog}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setEditModalShow(false)}
-                style={{
-                    overlay: {
-                        width: '100%',
-                        height: '100%',
-                    }
-                }}
+                handleClose={() => setEditModalShow(false)} 
             />
         </>
     )
