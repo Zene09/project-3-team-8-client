@@ -31,6 +31,7 @@ const BlogIndex = (props) => {
                 setError(true)
             })
     }, [])
+
     if (error) {
         return <p>Error!</p>
     }
@@ -50,15 +51,7 @@ const BlogIndex = (props) => {
                     <p>{blog.body}</p>
                 </Card.Text>
             </Card.Body>
-<<<<<<< HEAD
-            <Card.Footer style={{ textAlign: "right" }}>
-                <button>
-                    <Link to={`/blogs/${blog.id}`}>View this ok</Link>
-                </button>
-            </Card.Footer>
-=======
                 <Card.Footer style={{textAlign: "right"}}>
-                
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
                 <Button 
                     variant="outline-primary"
@@ -66,9 +59,14 @@ const BlogIndex = (props) => {
                 >
                     View this post
                 </Button>
+                {/* <Button 
+                    variant="outline-primary"
+                    onClick={() => navigate(`/updateBlog`)}
+                >
+                    Update this post
+                </Button> */}
                 
                 </Card.Footer>
->>>>>>> 4c17445b45ca55c0786058a2da35dc089c89d6c1
         </Card>
     ))
 

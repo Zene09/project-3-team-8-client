@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateBlog from './components/blogs/CreateBlog'
 import ShowBlog from './components/blogs/ShowBlog'
-import UpdateBlog from './components/blogs/UpdateBlog'
+
 
 const App = () => {
 
@@ -110,25 +110,14 @@ const App = () => {
 				<Route
 					path='/blogs/:id'
 					element={
-						<RequireAuth user={user}>
-							<ShowBlog
-								msgAlert={msgAlert}
-								user={user}
-							/>
-						</RequireAuth>
+						<ShowBlog
+							msgAlert={msgAlert}
+							user={user}
+						/>
 					}
 				/>
-				<Route
-					path='/blogupdate/:id'
-					element={
-						<RequireAuth user={user}>
-							<UpdateBlog
-								msgAlert={msgAlert}
-								user={user}
-							/>
-						</RequireAuth>
-					}
-				/>
+				{/* route, you want authentic for edit and delete only
+				but for create remove authentication */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

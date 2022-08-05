@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { Container, Card, Button } from "react-bootstrap"
 
 import LoadingScreen from "../shared/LoadingScreen"
 // import this down here vv updateBlog,
-import { getOneBlog, removeBlog } from "../../api/blogs"
+import { getOneBlog, removeBlog, updateBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
+import EditBlogModal from "./EditBlogModal"
 
 const containerStyle = {
     display: 'flex',
@@ -16,27 +17,26 @@ const containerStyle = {
 
 const ShowBlog = (props) => {
     const [blog, setBlog] = useState(null)
-    const [updated, setUpdate] = useState(false)
-    // ^^deconstructuring to get the id value from our route parameters
+    const [editModalShow, setEditModalShow] = useState(false)
+    const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
     const navigate = useNavigate()
 
 
     const { user, msgAlert } = props
-
+    // console.log('user in props', user)
 
     useEffect(() => {
         getOneBlog(id)
             .then(res => setBlog(res.data.blog))
             .catch(err => {
                 msgAlert({
-                    heading: 'Error Getting Blogs',
+                    heading: 'Error: request failed.',
                     message: messages.getBlogsFailure,
                     variant: 'danger',
                 })
                 navigate('/')
-                //navigate back to the homepage if there's an error
             })
     }, [updated])
 
@@ -78,14 +78,15 @@ const ShowBlog = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         {
-                            // this makes it so only the user who owns the post can delete it
-                            // we can put the edit modal (or button here) it just depends if we build an
-                            // edit function
                             blog.owner && user && blog.owner._id === user._id
                             ?
                             <>
-                                {/* edit modal here */}
-
+                                <Button onClick={() => setEditModalShow(true)}
+                                    className="m-2"
+                                    variant="outline-secondary"
+                                >
+                                    Update this post
+                                </Button>
                                 <Button onClick={() => removeTheBlog()}
                                     className="m-2"
                                     variant="outline-danger"
@@ -114,6 +115,15 @@ const ShowBlog = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
+            <EditBlogModal 
+                user={user}
+                blog={blog} 
+                show={editModalShow} 
+                updateBlog={updateBlog}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setEditModalShow(false)} 
+            />
         </>
     )
 }
