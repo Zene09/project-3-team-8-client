@@ -19,9 +19,9 @@ export const createBlog = (user, newBlog) => {
     // in our createPet form, we're building an object
     // when we pass that object into the api createPet function, 
     // it's going to look like the pets in our database
-    // we're going to refer to this as newPet
+    // we're going to refer to this as newBlog
     // console.log('this is user', user)
-    // console.log('this is pet', newBlog)
+    // console.log('this is the new Blog', newBlog)
     return axios({
         url: apiUrl + '/blogs',
         method: 'POST',
@@ -35,7 +35,18 @@ export const createBlog = (user, newBlog) => {
 // PATCH - UPDATE
 
 // please put update function here lyndonna
+export const updateBlog = (user, blogId) => {
+    console.log('update blog function ran')
+        return axios({
+            url: apiUrl + '/blogs',
+            method: 'POST',
+            headers: {
+                Authorization: `Token token=${user.token}`,
+            },
+            data: { blogId: newBlog },
+        })
 
+}
 // DELETE - DESTROY - hey I'll work in this -kyle
 export const removeBlog = (user, blogId) => {
 
