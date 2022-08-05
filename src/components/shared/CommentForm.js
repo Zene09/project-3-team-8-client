@@ -6,12 +6,12 @@ const CommentForm = (props) => {
     return (
         <Container className="justify-content-center">
             <Form onSubmit={handleSubmit}>
-                <Form.Label htmlFor="body">Comment</Form.Label>
+                <Form.Label htmlFor="text">Comment</Form.Label>
                 <Form.Control
                     placeholder="Comment Here"
-                    name="body"
-                    id="body"
-                    value={comment.body}
+                    name="text"
+                    id="text"
+                    value={comment.text}
                     onChange={handleChange}
                 />
                 <Button type="submit">Submit</Button>

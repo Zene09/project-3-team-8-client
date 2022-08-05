@@ -6,11 +6,11 @@ import { Container, Card, Button } from "react-bootstrap"
 
 import LoadingScreen from "../shared/LoadingScreen"
 // import this down here vv updateBlog,
-import { getOneBlog, removeBlog } from "../../api/blogs"
+import { getOneBlog, removeBlog, updateBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
-import NewCommentModal from "../comments/NewCommentModal"
-import ShowComment from "../comments/ShowComment"
 import EditBlogModal from "./EditBlogModal"
+import ShowComment from '../comments/ShowComment'
+import NewCommentModal from "../comments/NewCommentModal"
 
 const cardContainerLayout = {
     display: 'flex',
@@ -20,27 +20,27 @@ const cardContainerLayout = {
 
 const ShowBlog = (props) => {
     const [blog, setBlog] = useState(null)
+    const [editModalShow, setEditModalShow] = useState(false)
+    const [commentModalShow, setCommentModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
-    // ^^deconstructuring to get the id value from our route parameters
 
     const { id } = useParams()
     const navigate = useNavigate()
 
 
     const { user, msgAlert } = props
-
+    // console.log('user in props', user)
 
     useEffect(() => {
         getOneBlog(id)
             .then(res => setBlog(res.data.blog))
             .catch(err => {
                 msgAlert({
-                    heading: 'Error Getting Blogs',
+                    heading: 'Error: request failed.',
                     message: messages.getBlogsFailure,
                     variant: 'danger',
                 })
                 navigate('/')
-                //navigate back to the homepage if there's an error
             })
     }, [updated])
 
@@ -55,9 +55,9 @@ const ShowBlog = (props) => {
                 })
             })
             // then navigate to index
-            .then(() => {navigate('/')})
+            .then(() => { navigate('/') })
             // on failure send a failure message
-            .catch(err => {                   
+            .catch(err => {
                 msgAlert({
                     heading: 'Error removing blog',
                     message: messages.removeBlogFailure,
@@ -65,6 +65,7 @@ const ShowBlog = (props) => {
                 })
             })
     }
+
     let commentCards
     if (blog) {
         if (blog.comments.length > 0) {
@@ -72,7 +73,7 @@ const ShowBlog = (props) => {
                 <ShowComment
                     key={comment._id}
                     comment={comment}
-                    pet={blog}
+                    blog={blog}
                     user={user}
                     msgAlert={msgAlert}
                     triggerRefresh={() => setUpdated(prev => !prev)}
@@ -89,53 +90,57 @@ const ShowBlog = (props) => {
             <Container className="fluid">
                 <Card>
                     <Card.Header><h2
-                        style={{textAlign: 'center'}}>{blog.title}</h2></Card.Header>
+                        style={{ textAlign: 'center' }}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>{blog.body}</small></div>
+                            <div><small>Body:{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        <Button onClick={() => setCommentModalShow(true)}
+                            className="m-2" variant="info"
+                        >
+                           Leave a comment!
+                        </Button>
                         {
-                            // this makes it so only the user who owns the post can delete it
-                            // we can put the edit modal (or button here) it just depends if we build an
-                            // edit function
                             blog.owner && user && blog.owner._id === user._id
-                            ?
-                            <>
-                                {/* edit modal here */}
-
-                                <Button onClick={() => removeTheBlog()}
-                                    className="m-2"
-                                    variant="outline-danger"
-                                >
-                                    Delete this post
-                                </Button>
-                            </>
-                            :
-                            null
-                        }          
+                                ?
+                                <>
+                                    <Button onClick={() => setEditModalShow(true)}
+                                        className="m-2"
+                                        variant="outline-secondary"
+                                    >
+                                        Update this post
+                                    </Button>
+                                    <Button onClick={() => removeTheBlog()}
+                                        className="m-2"
+                                        variant="outline-danger"
+                                    >
+                                        Delete this post
+                                    </Button>
+                                </>
+                                :
+                                null
+                        }
                         {/* <small>add likes and timestamps here maybe</small> */}
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
-                        <p style={{textAlign: 'right'}}>{blog.commentsAvail}</p>
-                        <Button 
+                        <p style={{ textAlign: 'right' }}>{blog.commentsAvail}</p>
+                        <Button
                             onClick={() => navigate('/')}
-                                className="m-2 col-1"
-                                variant="outline-secondary"
-                                style={{
-                                    float: 'left',
-                                }}
-                            >
-                                 Go back
+                            className="m-2 col-1"
+                            variant="outline-secondary"
+                            style={{
+                                float: 'left',
+                            }}
+                        >
+                            Go back
                         </Button>
                         {/* </div> */}
                     </Card.Footer>
                 </Card>
             </Container>
-            <Container style={cardContainerLayout}>
-                {commentCards}
-            </Container>
+            <Container style={cardContainerLayout}>{commentCards}</Container>
             <EditBlogModal
                 user={user}
                 blog={blog}

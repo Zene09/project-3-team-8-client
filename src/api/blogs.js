@@ -47,7 +47,7 @@ export const updateBlog = (user, updatedBlog) => {
     })
 }
 
-// DELETE - DESTROY - hey I'll work onn this -kyle
+// DELETE - DESTROY - hey I'll work on this -kyle
 export const removeBlog = (user, blogId) => {
     return axios({
         url: `${apiUrl}/blogs/${blogId}`,

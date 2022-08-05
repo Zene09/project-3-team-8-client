@@ -11,25 +11,21 @@ const NewCommentModal = (props) => {
 
     const [comment, setComment] = useState({})
 
-    console.log('pet in edit modal', blog)
+    console.log('blog in edit modal', blog)
 
     const handleChange = (e) => {
         setComment(prevComment => {
             let value = e.target.value
-            const name = e.target.name
+            const updatedbody = e.target.name
 
-            console.log('this is the input type', e.target.type)
-
-            // this handles the checkbox, changing on to true etc
-            if (name === "isSqueaky" && e.target.checked) {
-                value = true
-            } else if (name === "isSqueaky" && !e.target.checked) {
-                value = false
-            }
+            // console.log('this is the input type', e.target.type)
+            // console.log(updatedbody)
+            // console.log("value", value)
 
             const updatedComment = {
-                [name]: value
+                [updatedbody]: value
             }
+            console.log("prev comment, updated comment", prevComment, updatedComment)
             return {
                 ...prevComment,
                 ...updatedComment
@@ -48,18 +44,18 @@ const NewCommentModal = (props) => {
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: 'Great! The pet loves it!',
+                    message: 'Comment added',
                     variant: 'success'
                 })
             })
             .then(() => triggerRefresh())
-            // if there is an error, tell the user about it
-            .catch(() =>
-                msgAlert({
-                    heading: 'Oh No!',
-                    message: 'Something went wrong, please try again',
-                    variant: 'danger'
-                })
+                .catch((err) =>
+                console.log(err)
+                // msgAlert({
+                //     heading: 'Oh No!',
+                //     message: 'Something went wrong, please try again',
+                //     variant: 'danger'
+                // })
             )
     }
 

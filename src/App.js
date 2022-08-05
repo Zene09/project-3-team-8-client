@@ -116,17 +116,6 @@ const App = () => {
 						/>
 					}
 				/>
-				{/* <Route
-					path='/blogupdate/:id'
-					element={
-						<RequireAuth user={user}>
-							<UpdateBlog
-								msgAlert={msgAlert}
-								user={user}
-							/>
-						</RequireAuth>
-					}
-				/> */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

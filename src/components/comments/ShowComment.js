@@ -6,7 +6,7 @@ import { deleteComment } from '../../api/comments'
 const ShowComment = (props) => {
     const { comment, blog, user, msgAlert, triggerRefresh } = props
     const [editModalShow, setEditModalShow] = useState(false)
-    
+
     const destroyComment = () => {
         deleteComment(user, blog._id, comment._id)
             .then(() =>
@@ -27,10 +27,10 @@ const ShowComment = (props) => {
         <>
             <Card className="m-2">
                 <Card.Body>
-                    <small>{comment.body}</small><br />
+                    <small>{comment.text}</small><br />
                 </Card.Body>
                 <Card.Footer>
-                   {
+                    {
                         user && user._id === blog.owner._id
                             ?
                             <>
