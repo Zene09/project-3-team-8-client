@@ -9,15 +9,19 @@ import LoadingScreen from "../shared/LoadingScreen"
 import { getOneBlog, removeBlog, updateBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
 import EditBlogModal from "./EditBlogModal"
+import ShowComment from '../comments/ShowComment'
+import NewCommentModal from "../comments/NewCommentModal"
 
-const containerStyle = {
+const cardContainerLayout = {
     display: 'flex',
-    // flexFlow: 'row wrap'
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
 }
 
 const ShowBlog = (props) => {
     const [blog, setBlog] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
+    const [commentModalShow, setCommentModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
 
     const { id } = useParams()
@@ -51,15 +55,31 @@ const ShowBlog = (props) => {
                 })
             })
             // then navigate to index
-            .then(() => {navigate('/')})
+            .then(() => { navigate('/') })
             // on failure send a failure message
-            .catch(err => {                   
+            .catch(err => {
                 msgAlert({
                     heading: 'Error removing blog',
                     message: messages.removeBlogFailure,
                     variant: 'danger'
                 })
             })
+    }
+
+    let commentCards
+    if (blog) {
+        if (blog.comments.length > 0) {
+            commentCards = blog.comments.map(comment => (
+                <ShowComment
+                    key={comment._id}
+                    comment={comment}
+                    blog={blog}
+                    user={user}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            ))
+        }
     }
 
     if (!blog) {
@@ -70,13 +90,18 @@ const ShowBlog = (props) => {
             <Container className="fluid">
                 <Card>
                     <Card.Header><h2
-                        style={{textAlign: 'center'}}>{blog.title}</h2></Card.Header>
+                        style={{ textAlign: 'center' }}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
                             <div><small>Body:{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
+                        <Button onClick={() => setCommentModalShow(true)}
+                            className="m-2" variant="info"
+                        >
+                           Leave a comment!
+                        </Button>
                         {
                             blog.owner && user && blog.owner._id === user._id
                             ?
@@ -100,29 +125,38 @@ const ShowBlog = (props) => {
                         {/* <small>add likes and timestamps here maybe</small> */}
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
-                        <p style={{textAlign: 'right'}}>{blog.commentsAvail}</p>
-                        <Button 
+                        <p style={{ textAlign: 'right' }}>{blog.commentsAvail}</p>
+                        <Button
                             onClick={() => navigate('/')}
-                                className="m-2 col-1"
-                                variant="outline-secondary"
-                                style={{
-                                    float: 'left',
-                                }}
-                            >
-                                 Go back
+                            className="m-2 col-1"
+                            variant="outline-secondary"
+                            style={{
+                                float: 'left',
+                            }}
+                        >
+                            Go back
                         </Button>
                         {/* </div> */}
                     </Card.Footer>
                 </Card>
             </Container>
-            <EditBlogModal 
+            <Container style={cardContainerLayout}>{commentCards}</Container>
+            <EditBlogModal
                 user={user}
-                blog={blog} 
-                show={editModalShow} 
+                blog={blog}
+                show={editModalShow}
                 updateBlog={updateBlog}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)} 
+            />
+            <NewCommentModal
+                blog={blog}
+                show={commentModalShow}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setCommentModalShow(false)}
             />
         </>
     )
