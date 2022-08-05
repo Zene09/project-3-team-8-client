@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateBlog from './components/blogs/CreateBlog'
 import ShowBlog from './components/blogs/ShowBlog'
-import UpdateBlog from './components/blogs/UpdateBlog'
+
 
 const App = () => {
 
@@ -127,6 +127,8 @@ const App = () => {
 						</RequireAuth>
 					}
 				/>
+				{/* route, you want authentic for edit and delete only
+				but for create remove authentication */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert

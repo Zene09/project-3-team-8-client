@@ -39,7 +39,7 @@ const SignIn = (props) => {
                 msgAlert({
                     heading: 'Sign In Success',
                     message: messages.signInSuccess,
-                    variant: 'outline-success',
+                    variant: 'success',
                 })
             )
             .then(() => navigate('/'))

@@ -12,7 +12,9 @@ const messages = {
 	getBlogSuccess: "Blog get success!",
 	getBlogFailure: "Blog failed to get",
 	removeBlogSuccess: "Blog successfully removed!",
-	removeBlogFailure: "Blog failed to delete!"
+	removeBlogFailure: "Blog failed to delete!",
+	updateBlogSuccess: "Blog successfully updated!",
+	updateBlogFailure: "Blog failed to delete!"
 }
 
 module.exports = messages
