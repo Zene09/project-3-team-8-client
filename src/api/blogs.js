@@ -38,12 +38,12 @@ export const createBlog = (user, newBlog) => {
 export const updateBlog = (user, updatedBlog) => {
     console.log('update blog function ran')
         return axios({
-            url: `${apiUrl}/blogs/${updatedBlog.id}`,
+            url: apiUrl + '/blogs',
             method: 'PATCH',
             headers: {
                 Authorization: `Token token=${user.token}`,
             },
-            data: { blog: updatedBlog },
+            data: { blogId: blogId },
         })
     }
 

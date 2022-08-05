@@ -116,6 +116,17 @@ const App = () => {
 						/>
 					}
 				/>
+				<Route
+					path='/blogupdate/:id'
+					element={
+						<RequireAuth user={user}>
+							<UpdateBlog
+								msgAlert={msgAlert}
+								user={user}
+							/>
+						</RequireAuth>
+					}
+				/>
 				{/* route, you want authentic for edit and delete only
 				but for create remove authentication */}
 			</Routes>
