@@ -51,8 +51,14 @@ const EditBlogModal = (props) => {
 
     return (
         <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton />
-            <Modal.Body>
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    Edit this Blog!
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body style={{
+                width: '100%',
+            }}>
                 <BlogForm 
                     blog={blog}
                     handleChange={handleChange}

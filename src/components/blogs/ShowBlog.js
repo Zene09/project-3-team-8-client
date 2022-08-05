@@ -85,7 +85,7 @@ const ShowBlog = (props) => {
                                     className="m-2"
                                     variant="outline-secondary"
                                 >
-                                    Update this post
+                                    Edit this post
                                 </Button>
                                 <Button onClick={() => removeTheBlog()}
                                     className="m-2"
@@ -122,7 +122,13 @@ const ShowBlog = (props) => {
                 updateBlog={updateBlog}
                 msgAlert={msgAlert}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-                handleClose={() => setEditModalShow(false)} 
+                handleClose={() => setEditModalShow(false)}
+                style={{
+                    overlay: {
+                        width: '100%',
+                        height: '100%',
+                    }
+                }}
             />
         </>
     )
