@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { createBlog } from "../../api/blogs"
+import { updateBlog } from "../../api/blogs"
 import { useNavigate } from "react-router-dom"
 import { updateBlogSuccess, updateBlogFailure } from "../shared/AutoDismissAlert/messages"
 import BlogForm from "../shared/BlogForm"
@@ -11,7 +11,7 @@ const UpdateBlog = (props) => {
 
     const [blog, setBlog] = useState({
         title: '',
-        body: '',
+        body: ''
     })
 
     console.log('this is blog in createBlog', blog)
@@ -20,8 +20,6 @@ const UpdateBlog = (props) => {
         setBlog(prevBlog => {
             let updatedValue = e.target.value
             const updatedName = e.target.name
-
-
             const updatedBlog = {
                 [updatedName]: updatedValue
             }
@@ -35,7 +33,7 @@ const UpdateBlog = (props) => {
     const handleSubmit = (e) => {
         // e equals the event
         e.preventDefault()
-        createBlog(user, blog)
+        updateBlog(user, blog)
             .then(res => { navigate(`/blogs/${res.data.blog.id}`) })
             // send a success message to the user
             .then(() => {
