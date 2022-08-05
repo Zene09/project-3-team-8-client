@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import { Container, Card, Button } from "react-bootstrap"
 
@@ -8,15 +8,19 @@ import LoadingScreen from "../shared/LoadingScreen"
 // import this down here vv updateBlog,
 import { getOneBlog, removeBlog } from "../../api/blogs"
 import messages from '../shared/AutoDismissAlert/messages'
+import NewCommentModal from "../comments/NewCommentModal"
+import ShowComment from "../comments/ShowComment"
+import EditBlogModal from "./EditBlogModal"
 
-const containerStyle = {
+const cardContainerLayout = {
     display: 'flex',
-    // flexFlow: 'row wrap'
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
 }
 
 const ShowBlog = (props) => {
     const [blog, setBlog] = useState(null)
-    const [updated, setUpdate] = useState(false)
+    const [updated, setUpdated] = useState(false)
     // ^^deconstructuring to get the id value from our route parameters
 
     const { id } = useParams()
@@ -60,6 +64,21 @@ const ShowBlog = (props) => {
                     variant: 'danger'
                 })
             })
+    }
+    let commentCards
+    if (blog) {
+        if (blog.comments.length > 0) {
+            commentCards = blog.comments.map(comment => (
+                <ShowComment
+                    key={comment._id}
+                    comment={comment}
+                    pet={blog}
+                    user={user}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            ))
+        }
     }
 
     if (!blog) {
@@ -114,6 +133,26 @@ const ShowBlog = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
+            <Container style={cardContainerLayout}>
+                {commentCards}
+            </Container>
+            <EditBlogModal
+                user={user}
+                blog={blog}
+                show={editModalShow}
+                updateBlog={updateBlog}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setEditModalShow(false)}
+            />
+            <NewCommentModal
+                blog={blog}
+                show={commentModalShow}
+                user={user}
+                msgAlert={msgAlert}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+                handleClose={() => setCommentModalShow(false)}
+            />
         </>
     )
 }

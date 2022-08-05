@@ -14,7 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import CreateBlog from './components/blogs/CreateBlog'
 import ShowBlog from './components/blogs/ShowBlog'
-import UpdateBlog from './components/blogs/UpdateBlog'
+
 
 const App = () => {
 
@@ -116,7 +116,7 @@ const App = () => {
 						/>
 					}
 				/>
-				<Route
+				{/* <Route
 					path='/blogupdate/:id'
 					element={
 						<RequireAuth user={user}>
@@ -126,7 +126,7 @@ const App = () => {
 							/>
 						</RequireAuth>
 					}
-				/>
+				/> */}
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
