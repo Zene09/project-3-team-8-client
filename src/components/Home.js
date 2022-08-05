@@ -7,12 +7,12 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2 
+			<h2
 				style={{
 					textAlign: 'center',
 					fontFamily: 'Times New Roman'
 				}}
-			> 
+			>
 				Welcome to MMO & Co.
 			</h2>
 			<BlogIndex msgAlert={msgAlert} />
