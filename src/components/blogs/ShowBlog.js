@@ -23,6 +23,9 @@ const ShowBlog = (props) => {
     const [editModalShow, setEditModalShow] = useState(false)
     const [commentModalShow, setCommentModalShow] = useState(false)
     const [updated, setUpdated] = useState(false)
+    let [likeCount, setLikeCount] = useState(0)
+    let [dislikeCount, setDislikeCount] = useState(0)
+    
 
     const { id } = useParams()
     const navigate = useNavigate()
@@ -93,7 +96,7 @@ const ShowBlog = (props) => {
                         style={{ textAlign: 'center' }}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>Body:{blog.body}</small></div>
+                            <div><small>{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
@@ -122,7 +125,12 @@ const ShowBlog = (props) => {
                             :
                             null
                         }          
-                        {/* <small>add likes and timestamps here maybe</small> */}
+                        <button style={{ float: 'right' }} onClick={()=>setLikeCount(likeCount++)}>
+                            <small>👍🏾 {likeCount}</small>
+                        </button>
+                        <button style={{ float: 'right' }} onClick={() => setDislikeCount(dislikeCount++)}>
+                            <small>👎🏾 {dislikeCount}</small>
+                        </button>
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
                         <p style={{ textAlign: 'right' }}>{blog.commentsAvail}</p>
