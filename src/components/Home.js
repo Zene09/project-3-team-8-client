@@ -10,10 +10,10 @@ const Home = (props) => {
 			<h2
 				style={{
 					textAlign: 'center',
-					fontFamily: 'Times New Roman'
+					fontFamily: 'Cinzel, serif'
 				}}
 			>
-				Welcome to MMO & Co.
+				Welcome, to Massive Multiblogger Online
 			</h2>
 			<BlogIndex msgAlert={msgAlert} />
 		</>

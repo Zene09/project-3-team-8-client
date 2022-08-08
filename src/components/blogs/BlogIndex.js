@@ -8,7 +8,8 @@ import { getAllBlogs } from "../../api/blogs";
 const cardContainerStyle = {
     display: 'flex',
     flexFlow: 'row wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontFamily: 'Marcellus, serif'
 }
 
 // BlogIndex should show all blogs and display them
@@ -24,7 +25,7 @@ const BlogIndex = (props) => {
             .then(res => setBlogs(res.data.blogs))
             .catch(err => {
                 msgAlert({
-                    heading: 'Error Getting Pets',
+                    heading: 'Error',
                     message: messages.getBlogsFailure,
                     variant: 'danger',
                 })
