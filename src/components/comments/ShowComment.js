@@ -6,6 +6,7 @@ import { deleteComment } from '../../api/comments'
 const ShowComment = (props) => {
     const { comment, blog, user, msgAlert, triggerRefresh } = props
     const [editModalShow, setEditModalShow] = useState(false)
+    console.log("comment info", comment)
 
     const destroyComment = () => {
         deleteComment(user, blog._id, comment._id)
@@ -25,7 +26,16 @@ const ShowComment = (props) => {
     }
     return (
         <>
-            <Card className="m-2">
+            {/* <Card className="m-2"> */}
+                {/* This allows comments to show owner OR anon depending */}
+                {/* <Card.Header>
+                    {comment.owner
+                    ?
+                    <h5>{comment.owner.username}</h5>
+                    :
+                    <h5>Anonymous</h5>}
+                </Card.Header> */}
+            <Card className="m-2" style={{ fontFamily: 'Marcellus, serif' }}>
                 <Card.Body>
                     <small>{comment.text}</small><br />
                 </Card.Body>

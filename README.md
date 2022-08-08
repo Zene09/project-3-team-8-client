@@ -12,8 +12,8 @@ You can also view and comment blog posts.
 * As a user, I want to be able to create/add a comment
 * As a user, I want to be able to update a comment
 * As a user, I want to be able to delete a comment
-* As a user, I want to be able to like a blog
-* As a user, I want to be able to dislike a blog
+* As a user, I want to be able to like a blog (stretch goal)
+* As a user, I want to be able to dislike a blog (stretch goal)
 
 # Project 3 API: MMO & Co.
 
