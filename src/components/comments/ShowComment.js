@@ -25,7 +25,7 @@ const ShowComment = (props) => {
     }
     return (
         <>
-            <Card className="m-2">
+            <Card className="m-2" style={{ fontFamily: 'Marcellus, serif' }}>
                 <Card.Body>
                     <small>{comment.text}</small><br />
                 </Card.Body>

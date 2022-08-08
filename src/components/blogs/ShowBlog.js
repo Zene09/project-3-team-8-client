@@ -90,17 +90,17 @@ const ShowBlog = (props) => {
             <Container className="fluid">
                 <Card>
                     <Card.Header><h2
-                        style={{ textAlign: 'center' }}>{blog.title}</h2></Card.Header>
+                        style={{ textAlign: 'center', fontFamily: 'Marcellus, serif' }}>{blog.title}</h2></Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>Body:{blog.body}</small></div>
+                            <div><small style={{ fontFamily: 'Marcellus, serif' }}>{blog.body}</small></div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         <Button onClick={() => setCommentModalShow(true)}
-                            className="m-2" variant="info"
+                            className="m-2" variant="info" style={{ fontFamily: 'Cinzel, serif', fontWeight: '500' }}
                         >
-                           Leave a comment!
+                           Add A Comment
                         </Button>
                         {
                             blog.owner && user && blog.owner._id === user._id
@@ -125,13 +125,15 @@ const ShowBlog = (props) => {
                         {/* <small>add likes and timestamps here maybe</small> */}
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
-                        <p style={{ textAlign: 'right' }}>{blog.commentsAvail}</p>
+                        {/* <p style={{ textAlign: 'right', fontFamily: 'Cinzel, serif', fontWeight: '500' }}>{blog.commentsAvail}</p> */}
                         <Button
                             onClick={() => navigate('/')}
                             className="m-2 col-1"
                             variant="outline-secondary"
                             style={{
                                 float: 'left',
+                                fontFamily: 'Cinzel, serif', 
+                                fontWeight: '500'
                             }}
                         >
                             Go back

@@ -36,7 +36,7 @@ const BlogIndex = (props) => {
         return <p>Error!</p>
     }
 
-    // If pets haven't been loaded yet, show a loading message
+    // If blogs haven't been loaded yet, show a loading message
     if (!blogs) {
         return <LoadingScreen />
     } else if (blogs.length === 0) {
@@ -53,6 +53,7 @@ const BlogIndex = (props) => {
             </Card.Body>
             <Card.Footer style={{ textAlign: "right" }}>
 
+                <p style={{ textAlign: 'left', fontFamily: 'Cinzel, serif', fontWeight: '500' }}>{blog.commentsAvail}</p>
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
                 <Button
                     variant="outline-primary"
@@ -60,7 +61,6 @@ const BlogIndex = (props) => {
                 >
                     View this post
                 </Button>
-
             </Card.Footer>
         </Card>
     ))
