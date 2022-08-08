@@ -4,7 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
     color: 'white',
-    textDecoration: 'none'
+    textDecoration: 'none',
+	fontFamily: 'Cinzel, serif'
 }
 const authenticatedOptions = (
 	<>
@@ -52,7 +53,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                MMO & Co Blog Posts
+                MMO & Co Blogs
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
