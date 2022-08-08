@@ -43,6 +43,7 @@ const BlogIndex = (props) => {
     } else if (blogs.length === 0) {
         return <p>No blogs yet. Better add some.</p>
     }
+    console.log("blog being indexed", blogs)
 
     console.log("blogs in index page", blogs)
     const blogCards = blogs.map(blog => (
