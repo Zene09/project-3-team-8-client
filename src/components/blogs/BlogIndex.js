@@ -44,15 +44,24 @@ const BlogIndex = (props) => {
         return <p>No blogs yet. Better add some.</p>
     }
 
+    console.log("blogs in index page", blogs)
     const blogCards = blogs.map(blog => (
         <Card style={{ width: '30%', margin: 5 }} key={blog.id}>
             <Card.Header style={{backgroundColor: '#3d0c02ff', color: '#fef4ecff'}}>{blog.title}</Card.Header>
             <Card.Body>
                 <Card.Text>
                     <p>{blog.body}</p>
+                    {/* <p>{blog.owner}</p> */}
                 </Card.Text>
             </Card.Body>
             <Card.Footer style={{ textAlign: "right", backgroundColor: '#0a2733ff', color: '#fef4ecff' }}>
+
+                {/* this allows display of post author OR anon depending */}
+                {blog.owner
+                ?
+                <h5>{blog.owner.username}</h5>
+                :
+                <h5>Anonymous</h5>}
 
                 <p style={{ textAlign: 'left', fontFamily: 'Cinzel, serif', fontWeight: '500' }}>{blog.commentsAvail}</p>
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
