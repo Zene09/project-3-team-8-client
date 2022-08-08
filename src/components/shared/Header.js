@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
-    color: 'white',
+    color: '#fef4ecff',
     textDecoration: 'none',
 	fontFamily: 'Cinzel, serif'
 }
@@ -50,7 +50,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar style={{background: '#3d0c02ff'}} bg='navbar sticky-top' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 MMO & Co Blogs
