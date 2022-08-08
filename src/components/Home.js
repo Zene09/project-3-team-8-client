@@ -9,11 +9,15 @@ const Home = (props) => {
 		<>
 			<h2
 				style={{
+					margin: '10px',
+					padding: '5px',
+					background: '#050d17ff',
 					textAlign: 'center',
-					fontFamily: 'Cinzel, serif'
+					fontFamily: 'Cinzel, serif',
+					color: '#f4a460ff'
 				}}
 			>
-				Welcome, to Massive Multiblogger Online
+				Massive Multiblogger Online
 			</h2>
 			<BlogIndex msgAlert={msgAlert} />
 		</>

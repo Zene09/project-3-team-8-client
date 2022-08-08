@@ -26,7 +26,7 @@ const ShowComment = (props) => {
     }
     return (
         <>
-            <Card className="m-2">
+            {/* <Card className="m-2"> */}
                 {/* This allows comments to show owner OR anon depending */}
                 {/* <Card.Header>
                     {comment.owner
@@ -35,6 +35,7 @@ const ShowComment = (props) => {
                     :
                     <h5>Anonymous</h5>}
                 </Card.Header> */}
+            <Card className="m-2" style={{ fontFamily: 'Marcellus, serif' }}>
                 <Card.Body>
                     <small>{comment.text}</small><br />
                 </Card.Body>
