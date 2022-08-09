@@ -160,10 +160,10 @@ const ShowBlog = (props) => {
                             null
                         }          
                         <button style={{ float: 'right' }} onClick={()=>setLikeCount(likeCount++)}>
-                            <small>👍🏾 {likeCount}</small>
+                            <span>👍🏾 {likeCount}</span>
                         </button>
                         <button style={{ float: 'right' }} onClick={() => setDislikeCount(dislikeCount++)}>
-                            <small>👎🏾 {dislikeCount}</small>
+                            <span>👎🏾 {dislikeCount}</span>
                         </button>
                         {/* tested styling here */}
                         {/* <div style={containerStyle}> */}
