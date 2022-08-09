@@ -3,6 +3,12 @@ import { Modal } from 'react-bootstrap'
 import BlogForm from '../shared/BlogForm'
 import { updateBlogSuccess, updateBlogFailure } from '../shared/AutoDismissAlert/messages'
 
+const modalStyle = {
+    fontFamily: 'Cinzel, serif', 
+    color: '#F4A460',
+    maxWidth: '99%', 
+    margin: '10px'
+}
 const EditBlogModal = (props) => {
     const {
         user, show, handleClose,
@@ -50,13 +56,13 @@ const EditBlogModal = (props) => {
     }
 
     return (
-        <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton>
+        <Modal show={show} onHide={handleClose} style={modalStyle}>
+            <Modal.Header closeButton style={{backgroundColor: '#3D0C02', color: '#FEF4EC', margin: '2px'}}>
                 <Modal.Title>
-                    Edit this Blog!
+                    Edit this Blog
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body>
+            <Modal.Body style={{backgroundColor: '#0A2733', fontFamily: 'Marcellus, serif', margin: '2px'}}>
                 <BlogForm
                     blog={blog}
                     handleChange={handleChange}
