@@ -15,6 +15,12 @@ const rowStyles = {
         color: '#F4A460'
 }
 
+const submitButton = {
+    fontFamily: 'Marcellus, serif',
+    backgroundColor: '#003309',
+    borderColor: '#FEF4EC',
+    margin: '10px'
+}
 const formGroupStyles = {
     marginBottom: '5px'
 }
@@ -121,12 +127,7 @@ const SignUp = (props) => {
                     <Button                         
                         variant='outline-light' 
                         type='submit'
-                        style={{ 
-                            fontFamily: 'Marcellus, serif',
-                            backgroundColor: '#003309',
-                            borderColor: '#FEF4EC',
-                            margin: '10px'
-                        }}>
+                        style={submitButton}>
                         Submit
                     </Button>
                 </Form>

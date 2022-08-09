@@ -9,6 +9,14 @@ const modalStyle = {
     maxWidth: '99%', 
     margin: '10px'
 }
+
+const submitButton = {
+    fontFamily: 'Marcellus, serif',
+    backgroundColor: '#003309',
+    borderColor: '#FEF4EC',
+    margin: '10px'
+}
+
 const EditBlogModal = (props) => {
     const {
         user, show, handleClose,
