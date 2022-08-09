@@ -60,14 +60,18 @@ const BlogIndex = (props) => {
                 {/* this allows display of post author OR anon depending */}
                 {blog.owner
                 ?
-                <h5>{blog.owner.username}</h5>
+                <h5>Author: {blog.owner.username}</h5>
                 :
-                <h5>Anonymous</h5>}
+                <h5>Author: Anonymous</h5>}
 
                 <p style={{ textAlign: 'left', fontFamily: 'Cinzel, serif', fontWeight: '500' }}>{blog.commentsAvail}</p>
                 {/* <Link to={`/blogs/${blog.id}`}>View this ok</Link> */}
                 <Button
-                    style={{backgroundColor: '#f4a460ff', color: '#050d17ff', border: '#fef4ecff'}}
+                    variant='outline-dark'
+                    style={{
+                        backgroundColor: '#f4a460ff',  
+                        border: '#fef4ecff'
+                    }}
                     onClick={() => navigate(`/blogs/${blog.id}`)}
                 >
                     View this post
