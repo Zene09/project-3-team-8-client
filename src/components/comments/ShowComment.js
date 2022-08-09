@@ -35,24 +35,37 @@ const ShowComment = (props) => {
                     :
                     <h5>Anonymous</h5>}
                 </Card.Header> */}
-            <Card className="m-2" style={{ fontFamily: 'Marcellus, serif' }}>
+            <Card className="m-2" style={{ fontFamily: 'Marcellus, serif', color: '#050d17ff' }}>
                 <Card.Body>
                     <small>{comment.text}</small><br />
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer style={{backgroundColor: '#0a2733ff'}}>
                     {
                         user && user._id === blog.owner._id
                             ?
                             <>
                                 <Button
-                                    variant="warning"
+                                    variant="outline-dark"
+                                    style={{ 
+                                        fontFamily: 'Cinzel, serif', 
+                                        fontWeight: '500',
+                                        margin: '5px',
+                                        backgroundColor: '#e57310',
+                                        borderColor: '#e57320' 
+                                    }}
                                     onClick={() => setEditModalShow(true)}
                                 >
                                     Edit Comment
                                 </Button>
                                 <Button
+                                    variant="outline-light"
+                                    style={{ fontFamily: 'Cinzel, serif', 
+                                    fontWeight: '500',
+                                    margin: '5px',
+                                    backgroundColor: '#B22206',
+                                    borderColor: '#B22210'
+                                    }}
                                     onClick={() => destroyComment()}
-                                    variant="danger"
                                 >
                                     Delete Comment
                                 </Button>

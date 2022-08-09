@@ -7,6 +7,20 @@ import messages from '../shared/AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+const rowStyles = {
+    fontFamily: 'Marcellus, serif',
+    textShadow: '5px',
+    backgroundColor: '#0A2733',
+    color: '#F4A460'
+}
+
+const submitButton = {
+    fontFamily: 'Marcellus, serif',
+    backgroundColor: '#003309',
+    borderColor: '#FEF4EC',
+    margin: '10px'
+}
+
 const ChangePassword = (props) => {
 	// constructor(props) {
 	// 	super(props)
@@ -53,12 +67,12 @@ const ChangePassword = (props) => {
 
 
     return (
-        <div className='row'>
+        <div className='row' style={rowStyles}>
             <div className='col-sm-10 col-md-8 mx-auto mt-5'>
-                <h3>Change Password</h3>
+                <h3 style={{ marginBottom: '15px' }}>Change Password</h3>
                 <Form onSubmit={onChangePassword}>
                     <Form.Group controlId='oldPassword'>
-                        <Form.Label>Old password</Form.Label>
+                        <Form.Label style={{ marginBottom: '5px' }}>Old password</Form.Label>
                         <Form.Control
                             required
                             name='oldPassword'
@@ -69,7 +83,7 @@ const ChangePassword = (props) => {
                         />
                     </Form.Group>
                     <Form.Group controlId='newPassword'>
-                        <Form.Label>New Password</Form.Label>
+                        <Form.Label style={{ marginBottom: '5px' }}>New Password</Form.Label>
                         <Form.Control
                             required
                             name='newPassword'
@@ -79,7 +93,10 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button 
+                        variant='outline-light' 
+                        type='submit'
+                        style={submitButton}>
                         Submit
                     </Button>
                 </Form>

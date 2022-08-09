@@ -1,10 +1,23 @@
 import { Form, Button, Container, Row } from 'react-bootstrap'
 
+const addBlogStyles = {
+    fontFamily: 'Marcellus, serif',
+    textShadow: '5px',
+    backgroundColor: '#0A2733',
+    color: '#F4A460'
+}
+
+const submitButton = {
+    fontFamily: 'Marcellus, serif',
+    backgroundColor: '#003309',
+    borderColor: '#FEF4EC',
+    margin: '10px'
+}
 
 const BlogForm = (props) => {
     const { blog, handleChange, handleSubmit } = props
     return (
-        <Container className="justify-content-center mb-3">
+        <Container className="justify-content-center mb-3" style={addBlogStyles}>
             <Form onSubmit={handleSubmit}>
                 <Form.Group as={Row} className="mb-3">
                     <Form.Label 
@@ -24,7 +37,7 @@ const BlogForm = (props) => {
                         value={blog.title}
                         onChange={handleChange}
                     />
-                    <Form.Label htmlFor="body">Blog</Form.Label>
+                    <Form.Label htmlFor="body">Body</Form.Label>
                     <Form.Control
                         as="textarea"
                         rows={8}
@@ -36,7 +49,7 @@ const BlogForm = (props) => {
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Button type="submit">Submit</Button>
+                <Button style={submitButton} type="submit">Submit</Button>
             </Form>
         </Container>
     )

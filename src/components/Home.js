@@ -17,7 +17,7 @@ const Home = (props) => {
 					color: '#f4a460ff'
 				}}
 			>
-				Massive Multiblogger Online
+			Massive Multiblogger Online
 			</h2>
 			<BlogIndex msgAlert={msgAlert} />
 		</>

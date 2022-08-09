@@ -13,9 +13,13 @@ import ShowComment from '../comments/ShowComment'
 import NewCommentModal from "../comments/NewCommentModal"
 
 const cardContainerLayout = {
+    backgroundColor: '#050D17', 
+    color: '#fef4ecff',
     display: 'flex',
     justifyContent: 'center',
-    flexFlow: 'row wrap'
+    flexFlow: 'row wrap',
+    maxWidth: '99%', 
+    margin: '0px, 10px, 10px, 10px'
 }
 
 const ShowBlog = (props) => {
@@ -90,18 +94,36 @@ const ShowBlog = (props) => {
     }
     return (
         <>
-            <Container className="fluid">
+            <Container className="fluid" style={{background: '#050D17', maxWidth: '99%'}}>
                 <Card>
-                    <Card.Header><h2
-                        style={{ textAlign: 'center', fontFamily: 'Marcellus, serif' }}>{blog.title}</h2></Card.Header>
+                    <Card.Header                         
+                        style={{ 
+                            margin: '5px',
+                            textAlign: 'center', 
+                            fontFamily: 'Marcellus, serif', 
+                            backgroundColor: '#3d0c02ff', 
+                            color: '#fef4ecff' }}
+                        >
+                        <h2>
+                            {blog.title}
+                        </h2>
+                    </Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small style={{ fontFamily: 'Marcellus, serif' }}>{blog.body}</small></div>
+                            <div><p style={{ fontFamily: 'Marcellus, serif' }}>{blog.body}</p></div>
                         </Card.Text>
                     </Card.Body>
-                    <Card.Footer>
+                    <Card.Footer style={{backgroundColor: '#0a2733ff', color: '#fef4ecff'}}>
                         <Button onClick={() => setCommentModalShow(true)}
-                            className="m-2" variant="info" style={{ fontFamily: 'Cinzel, serif', fontWeight: '500' }}
+                            className="m-2" 
+                            variant="outline-dark" 
+                            style={{ 
+                            fontFamily: 'Cinzel, serif', 
+                            fontWeight: '500',
+                            margin: '5px',
+                            backgroundColor: '#45ACD9',
+                            borderColor: '#45ACD9'
+                            }}
                         >
                            Add A Comment
                         </Button>
@@ -111,13 +133,25 @@ const ShowBlog = (props) => {
                             <>
                                 <Button onClick={() => setEditModalShow(true)}
                                     className="m-2"
-                                    variant="outline-secondary"
+                                    variant="outline-dark"
+                                    style={{ fontFamily: 'Cinzel, serif', 
+                                    fontWeight: '500',
+                                    margin: '5px',
+                                    backgroundColor: '#e57310',
+                                    borderColor: '#e57310'
+                                    }}
                                 >
                                     Update this post
                                 </Button>
                                 <Button onClick={() => removeTheBlog()}
                                     className="m-2"
-                                    variant="outline-danger"
+                                    variant="outline-light"
+                                    style={{ fontFamily: 'Cinzel, serif', 
+                                    fontWeight: '500',
+                                    margin: '5px',
+                                    backgroundColor: '#B22206',
+                                    borderColor: '#B22210'
+                                    }}
                                 >
                                     Delete this post
                                 </Button>
@@ -137,11 +171,14 @@ const ShowBlog = (props) => {
                         <Button
                             onClick={() => navigate('/')}
                             className="m-2 col-1"
-                            variant="outline-secondary"
+                            variant="outline-dark"
                             style={{
                                 float: 'left',
                                 fontFamily: 'Cinzel, serif', 
-                                fontWeight: '500'
+                                fontWeight: '500',
+                                margin: '5px',
+                                backgroundColor: '#FEF4EC',
+                                borderColor: '#FEF4EC'
                             }}
                         >
                             Go back
